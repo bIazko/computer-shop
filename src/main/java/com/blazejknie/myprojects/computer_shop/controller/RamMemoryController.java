@@ -1,6 +1,6 @@
 package com.blazejknie.myprojects.computer_shop.controller;
 
-import com.blazejknie.myprojects.computer_shop.model.RamMemory;
+import com.blazejknie.myprojects.computer_shop.model.RAMemory;
 import com.blazejknie.myprojects.computer_shop.repository.RamMemoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +18,13 @@ public class RamMemoryController {
     }
 
     @GetMapping
-    public List<RamMemory> getAllRamMemoryies() {
+    public List<RAMemory> getAllRamMemoryies() {
         return ramMemoryRepository.findAll();
     }
 
     @PostMapping
-    public RamMemory addRamMemory(@RequestBody RamMemory ramMemory) {
-        return ramMemoryRepository.save(ramMemory);
+    public RAMemory addRamMemory(@RequestBody RAMemory RAMemory) {
+        return ramMemoryRepository.save(RAMemory);
     }
 
 }

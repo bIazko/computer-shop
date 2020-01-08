@@ -1,11 +1,13 @@
 package com.blazejknie.myprojects.computer_shop.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "processors")
@@ -15,6 +17,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Processor extends Product{
     @Column(name = "frequency_Ghz")
-    private double frequencyInGhz;
+    private double CpuFrequencyInGhz;
+    private double turboClockFrequencyInGhz;
+    private String socketType;
+    private int numberOfCors;
+    private int maxPowerConsumption;
 
 }

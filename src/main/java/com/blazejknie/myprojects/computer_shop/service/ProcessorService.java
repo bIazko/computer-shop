@@ -7,12 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class ProcessorService {
-
     private ProcessorRepository processorRepository;
     @Autowired
     public ProcessorService(ProcessorRepository processorRepository) {
@@ -24,7 +22,7 @@ public class ProcessorService {
         return processorRepository.findAll();
     }
 
-    public Optional<Processor> getById(long id) {
+    public Optional<Processor> getById(long id) throws NoSuchElementException {
         return processorRepository.findById(id);
     }
 
@@ -35,7 +33,7 @@ public class ProcessorService {
     public Processor update(Long id, Processor processor) throws NoSuchElementException {
         return processorRepository.findById(id)
                 .map(p ->{
-                    p.setFrequencyInGhz(processor.getFrequencyInGhz());
+                    p.setCpuFrequencyInGhz(processor.getCpuFrequencyInGhz());
                     p.setBrand(processor.getBrand());
                     p.setModel(processor.getModel());
                     p.setName(processor.getName());
@@ -46,7 +44,9 @@ public class ProcessorService {
 
     }
 
-    public void deleteProcesor(Long id) {
-        processorRepository.deleteById(id);
+    public void deleteProcesor(Long id) throws NoSuchElementException {
+        Processor processor = processorRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException(String.format("not found processor with id = %d", id)));
+        processorRepository.delete(processor);
     }
 }

@@ -37,9 +37,9 @@ public class ProcessorController {
 
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeProcessor(@RequestParam long id) {
+    public void removeProcessor(@PathVariable long id) {
         processorService.deleteProcesor(id);
     }
 

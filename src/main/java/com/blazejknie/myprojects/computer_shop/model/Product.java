@@ -7,7 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -15,7 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class Product {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -35,6 +34,6 @@ public abstract class Product {
 
     @Column
     @NotNull
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
 }

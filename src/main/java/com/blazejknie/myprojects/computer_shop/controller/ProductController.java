@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController()
-@RequestMapping("api/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
 
@@ -28,7 +28,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    @GetMapping
+    @GetMapping("/count")
     @ResponseStatus(HttpStatus.OK)
     public Long countProducts() {
         return productService.countProducts();
